@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AutomaticNumbers from "../AutomaticNumbers/AutomaticNumbers";
 
 const Hero = () => {
   return (
@@ -36,6 +37,7 @@ const Hero = () => {
             </div>
           </div>
         </div>
+       
         <div className="absolute right-0 top-0 z-[-1] opacity-30 lg:opacity-100">
           <svg
             width="450"
@@ -174,6 +176,7 @@ const Hero = () => {
             </defs>
           </svg>
         </div>
+       
         <div className="absolute bottom-0 left-0 z-[-1] opacity-30 lg:opacity-100">
           <svg
             width="364"
