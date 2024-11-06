@@ -18,9 +18,11 @@ const CloudServicesPage = () => {
       <Breadcrumb
         pageName="Cloud Services"
         description="Our cloud services streamline operations, reduce costs, and boost scalability, giving your business the flexibility to grow. With expert support and tailored solutions, we help you innovate faster and stay ahead of the competition."
+        animationIcons="https://lottie.host/d9a7b6c4-2831-4722-9114-626cfadada4c/LWcyZueMDJ.json"
       />
-      <Capabilities/>
+      
       <AboutSectionOne />
+      <Capabilities/>
       <Testimonials/>
     </>
   );
