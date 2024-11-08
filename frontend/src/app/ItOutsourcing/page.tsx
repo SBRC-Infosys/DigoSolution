@@ -1,4 +1,5 @@
 import Breadcrumb from "@/components/Common/Breadcrumb";
+import ITCapabilities from "@/components/OutsourcingCapabilities/ITCapabilities";
 import React from "react";
 
 const ItOutsourcing = () => {
@@ -14,6 +15,7 @@ const ItOutsourcing = () => {
                         "
         animationIcons="https://lottie.host/20157507-17db-437f-9db5-a6c27416316c/tRnd5k4dcj.json"
       />
+      <ITCapabilities/>
     </>
   );
 };

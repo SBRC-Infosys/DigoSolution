@@ -6,6 +6,8 @@ import React, { useState } from 'react'
 import ProductListFilters from '@/components/ProductList/ProductListFilters';
 import ProductList from '@/components/ProductList/ProductList';
 import Capabilities from '@/components/CloudServices/Capabilities';
+import { Spin,Flex } from 'antd';
+import { LoadingOutlined } from '@ant-design/icons';
 
 const DevOps = () => {
   // const [search, setSearch] = useState<ProductFilters['search']>();
@@ -42,8 +44,9 @@ const DevOps = () => {
         }}
       />
       <div>
-        {data && <ProductList products={data} />}
-        {isFetching ? <p>Loading...</p> : ""}
+        
+        {isFetching ? <Spin style={{ fontSize: 48, display:'flex', justifyContent:'center', marginTop:"4rem"  }}  indicator={<LoadingOutlined style={{ fontSize: 48, display:'flex',  }} spin />} />
+        : (data && <ProductList products={data}  />)}
       </div>
     </div>
     <Capabilities/>
