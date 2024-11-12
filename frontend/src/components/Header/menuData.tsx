@@ -48,46 +48,11 @@ const menuData: Menu[] = [
         path: "/contact",
         newTab: false,
       },
+     
       {
         id: 53,
-        title: "Careers",
-        path: "/careers",
-        newTab: false,
-      },
-      {
-        id: 54,
         title: "Blogs",
         path: "/blog",
-        newTab: false,
-      },
-      {
-        id: 55,
-        title: "Blog Sidebar Page",
-        path: "/blog-sidebar",
-        newTab: false,
-      },
-      {
-        id: 56,
-        title: "Blog Details Page",
-        path: "/blog-details",
-        newTab: false,
-      },
-      {
-        id: 57,
-        title: "Sign In Page",
-        path: "/signin",
-        newTab: false,
-      },
-      {
-        id: 58,
-        title: "Sign Up Page",
-        path: "/signup",
-        newTab: false,
-      },
-      {
-        id: 59,
-        title: "Error Page",
-        path: "/error",
         newTab: false,
       },
     ],
