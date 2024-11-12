@@ -43,6 +43,48 @@ const brandsData: Brand[] = [
     image: "/images/brands/plainadmin.svg",
     imageLight: "/images/brands/plainadmin-light.svg",
   },
+  {
+    id: 6,
+    name: "Formbold",
+    href: "#",
+    image: "/images/brands/formbold.svg",
+    imageLight: "/images/brands/formbold-light.svg",
+  },
+  {
+    id: 7,
+    name: "UIdeck",
+    href: "#",
+    image: "/images/brands/uideck.svg",
+    imageLight: "/images/brands/uideck-light.svg",
+  },
+  {
+    id: 8,
+    name: "Tailgrids",
+    href: "#",
+    image: "/images/brands/tailgrids.svg",
+    imageLight: "/images/brands/tailgrids-light.svg",
+  },
+  {
+    id: 9,
+    name: "Lineicons",
+    href: "#",
+    image: "/images/brands/lineicons.svg",
+    imageLight: "/images/brands/lineicons-light.svg",
+  },
+  {
+    id: 10,
+    name: "Tailadmin",
+    href: "#",
+    image: "/images/brands/tailadmin.svg",
+    imageLight: "/images/brands/tailadmin-light.svg",
+  },
+  {
+    id: 11,
+    name: "PlainAdmin",
+    href: "#",
+    image: "/images/brands/plainadmin.svg",
+    imageLight: "/images/brands/plainadmin-light.svg",
+  },
 ];
 
 export default brandsData;

@@ -1,5 +1,6 @@
 import AboutSectionOne from "@/components/About/AboutSectionOne";
 import Capabilities from "@/components/CloudServices/Capabilities";
+import AppoinmentBread from "@/components/Common/AppoinmentBread";
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import Testimonials from "@/components/Testimonials";
 
@@ -23,6 +24,7 @@ const CloudServicesPage = () => {
       
       <AboutSectionOne />
       <Capabilities/>
+      <AppoinmentBread description="Experience Seamless Cloud Operations" appoinment="Book A Consulation"/>
       <Testimonials/>
     </>
   );
