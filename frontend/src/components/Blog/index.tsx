@@ -1,6 +1,8 @@
+import { Carousel } from "antd";
 import SectionTitle from "../Common/SectionTitle";
 import SingleBlog from "./SingleBlog";
 import blogData from "./blogData";
+
 
 const Blog = () => {
   return (
@@ -15,12 +17,44 @@ const Blog = () => {
           center
         />
 
-        <div className="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 md:gap-x-6 lg:gap-x-8 xl:grid-cols-3">
+        <div>
+          <Carousel
+          arrows
+          infinite
+          autoplay
+          className="custom-carousel"
+          dots={false}
+          slidesToShow={3}
+          slidesToScroll={1}
+          responsive={[
+            {
+              breakpoint: 1024,
+              settings: {
+                slidesToShow: 3,
+                slidesToScroll: 1,
+              },
+            },
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 2,
+                slidesToScroll: 1,
+              },
+            },
+            {
+              breakpoint: 480,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              },
+            },
+          ]}>
           {blogData.map((blog) => (
-            <div key={blog.id} className="w-full">
+            <div key={blog.id} className="w-full p-8">
               <SingleBlog blog={blog} />
             </div>
           ))}
+          </Carousel>
         </div>
       </div>
     </section>

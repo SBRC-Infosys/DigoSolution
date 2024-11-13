@@ -2,6 +2,7 @@ import { Brand } from "@/types/brand";
 import Image from "next/image";
 import brandsData from "./brandsData";
 import { Carousel } from "antd";
+import background from '../../../public/images/backgroundImg/bgFour.jpg';
 
 const Brands = () => {
 
@@ -11,7 +12,7 @@ const Brands = () => {
         <div className="-mx-4 flex flex-wrap">
           <div className="w-full px-4">
           <h1 className="text-4xl font-medium text-center my-8">Trusted By</h1>
-            <div className=" rounded-sm bg-gray-light px-8 py-8 dark:bg-gray-dark sm:px-10 md:px-[50px] md:py-[40px] xl:p-[50px] 2xl:px-[70px] 2xl:py-[60px]">
+            <div style={{ backgroundImage: `url(${background.src})`}} className=" h-50 w-full bg-cover bg-center rounded-sm  px-8 py-8  sm:px-10 md:px-[50px] md:py-[40px] xl:p-[50px] 2xl:px-[70px] 2xl:py-[60px]">
               <Carousel
                 autoplay
                 dots={false}

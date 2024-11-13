@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect, useRef } from "react";
+import background from '../../../public/images/backgroundImg/bgOne.jpg';
 
 const AutomaticNumbers: React.FC = () => {
   const itemsRef = useRef<NodeListOf<HTMLSpanElement> | null>(null);
@@ -47,7 +48,8 @@ const AutomaticNumbers: React.FC = () => {
   return (
     <div
       ref={containerRef}
-      className="grid gap-8 sm:grid-cols-2 md:grid-cols-4 text-center rounded-sm bg-gray-light px-8 py-8 dark:bg-cyan-800 sm:px-10 md:px-[50px] md:py-[40px] xl:p-[50px] 2xl:px-[70px] 2xl:py-[60px]"
+      style={{ backgroundImage: `url(${background.src})`}}
+      className="grid  h-50 w-full bg-cover bg-center gap-8 sm:grid-cols-2 md:grid-cols-4 text-center rounded-sm dark:text-black px-8 py-8  sm:px-10 md:px-[50px] md:py-[40px] xl:p-[50px] 2xl:px-[70px] 2xl:py-[60px]"
     >
       <article>
         <span className="number text-4xl font-semibold" data-value="80">80+</span>

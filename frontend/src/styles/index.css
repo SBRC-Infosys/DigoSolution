@@ -32,3 +32,84 @@
   }
 }
 
+.custom-carousel .slick-prev,
+.custom-carousel .slick-next {
+  width: 40px;
+  height: 40px;
+  color: #000; 
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  
+}
+
+.custom-carousel .slick-prev:hover,
+.custom-carousel .slick-next:hover {
+  opacity: 1;
+}
+
+.custom-carousel .slick-prev {
+  left: -30px; 
+}
+
+.custom-carousel .slick-next {
+  right: -50px; 
+}
+
+.dark .custom-carousel .slick-prev,
+.dark .custom-carousel .slick-next {
+  color: #fff; 
+}
+
+@property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+.aniCard {
+  position: relative;
+  display: flex;
+}
+
+
+.aniCard::before,
+.aniCard::after {
+  content: "";
+  width: 102%;
+  height: 102%;
+  border-radius: 16px;
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -1%;
+  opacity: 0; 
+  transition: opacity 0.5s; 
+}
+
+
+.aniCard:hover::before,
+.aniCard:hover::after {
+  background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+  animation: spin 2.5s linear infinite;
+  opacity: 1;
+}
+
+
+.aniCard::after {
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--aniCard-height) / 6));
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}

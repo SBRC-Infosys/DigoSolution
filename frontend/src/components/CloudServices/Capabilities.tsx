@@ -1,4 +1,3 @@
-import Image from "next/image";
 import SectionTitle from "../Common/SectionTitle";
 import CapabilitiesData from "./CapabilitiesData";
 import CapabilitiesFeatures from "./CapabilitiesFeatures";

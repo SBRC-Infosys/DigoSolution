@@ -1,5 +1,6 @@
 import AboutSectionOne from "@/components/About/AboutSectionOne";
 import AboutSectionTwo from "@/components/About/AboutSectionTwo";
+import AutomaticNumbers from "@/components/AutomaticNumbers/AutomaticNumbers";
 import Blog from "@/components/Blog";
 import Brands from "@/components/Brands";
 import ScrollUp from "@/components/Common/ScrollUp";
@@ -14,7 +15,7 @@ import { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Digo Solution",
   description: "Unleash The Power of Cloud",
-  // other metadata
+  
 };
 
 export default function Home() {
@@ -24,11 +25,12 @@ export default function Home() {
       <Hero />
       <Features />
       <Video />
-      <Brands />
+      <AutomaticNumbers/>
       <AboutSectionOne />
       <AboutSectionTwo />
-      <Testimonials />
-      {/* <Pricing /> */}
+      <Testimonials/>
+      <Brands />
+      
       <Blog />
       <Contact />
     </>
