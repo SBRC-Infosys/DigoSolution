@@ -84,6 +84,7 @@
   left: -1%;
   opacity: 0; 
   transition: opacity 0.5s; 
+  
 }
 
 
@@ -92,8 +93,8 @@
   background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
   animation: spin 2.5s linear infinite;
   opacity: 1;
+  
 }
-
 
 .aniCard::after {
   left: 0;
