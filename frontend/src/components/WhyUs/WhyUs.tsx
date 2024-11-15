@@ -8,8 +8,8 @@ const WhyUs = () => {
     <section id="features" className="py-16 md:py-20 lg:py-28">
       <div className="container">
         <SectionTitle
-          title="Our Capabilities"
-          paragraph="Whether you’re a digital native or you’re modernizing; whether you’re looking for help building new products or transforming, Digo can help! "
+          title="Why Partner With Digo ?"
+          paragraph=" "
           center
         />
 

@@ -93,7 +93,6 @@
   background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
   animation: spin 2.5s linear infinite;
   opacity: 1;
-  
 }
 
 .aniCard::after {
@@ -104,6 +103,7 @@
   margin: 0 auto;
   transform: scale(0.8);
   filter: blur(calc(var(--aniCard-height) / 6));
+  
 }
 
 @keyframes spin {

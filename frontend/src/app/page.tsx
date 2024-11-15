@@ -2,15 +2,16 @@ import AboutSectionOne from "@/components/About/AboutSectionOne";
 import AboutSectionTwo from "@/components/About/AboutSectionTwo";
 import AutomaticNumbers from "@/components/AutomaticNumbers/AutomaticNumbers";
 import Blog from "@/components/Blog";
-import Brands from "@/components/Brands";
+
 import ScrollUp from "@/components/Common/ScrollUp";
 import Contact from "@/components/Contact";
 import Features from "@/components/Features";
 import Hero from "@/components/Hero";
-import Pricing from "@/components/Pricing";
+
 import Testimonials from "@/components/Testimonials";
 import Video from "@/components/Video";
 import { Metadata } from "next";
+import TrustedBy from "@/components/TrustedBy";
 
 export const metadata: Metadata = {
   title: "Digo Solution",
@@ -29,7 +30,7 @@ export default function Home() {
       <AboutSectionOne />
       <AboutSectionTwo />
       <Testimonials/>
-      <Brands />
+      <TrustedBy />
       
       <Blog />
       <Contact />
