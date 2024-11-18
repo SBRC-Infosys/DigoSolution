@@ -12,13 +12,6 @@ export default function ProductList({ products }: ProductListProps) {
           key={product.id}
           className="flex w-[120px] h-[120px] flex-col gap-4 rounded-md bg-grayscale-700 p-4 "
         >
-          {/* <div className="flex flex-row justify-between">
-            <div>
-              <h2 className="text-xl font-bold">{product.name}</h2>
-              <p className="opacity-50">{product.category}</p>
-            </div>
-            <p>${product.price}</p>
-          </div> */}
           <img src={product.image} alt={product.name} className="rounded-md  " />
         </div>
       ))}
