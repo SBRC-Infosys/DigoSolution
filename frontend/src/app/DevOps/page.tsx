@@ -8,6 +8,8 @@ import ProductList from "@/components/ProductList/ProductList";
 import Capabilities from "@/components/Capabilities/Capabilities";
 import { Spin, Flex } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
+import Advantage from "@/components/DevOps/Advantage";
+import RoadMap from "@/components/DevOps/RoadMap";
 
 const DevOps = () => {
   // const [search, setSearch] = useState<ProductFilters['search']>();
@@ -66,6 +68,8 @@ const DevOps = () => {
         </div>
       </div>
       <Capabilities />
+      <Advantage/>
+      <RoadMap/>
     </>
   );
 };
