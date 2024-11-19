@@ -71,7 +71,6 @@
   display: flex;
 }
 
-
 .aniCard::before,
 .aniCard::after {
   content: "";
@@ -79,37 +78,28 @@
   height: 102%;
   border-radius: 16px;
   position: absolute;
-  z-index: -1;
   top: -1%;
   left: -1%;
-  opacity: 0; 
+  opacity: 1; 
+  z-index: -1;
   transition: opacity 0.5s; 
 }
 
 
 .aniCard:hover::before,
 .aniCard:hover::after {
-  background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+  background-image:conic-gradient(from var(--angle), #5ddcff, #3c67e3 43%, #4e00c2,#5ddcff);
   animation: spin 2.5s linear infinite;
   opacity: 1;
 }
 
-.aniCard::after {
-  left: 0;
-  right: 0;
-  height: 100%;
-  width: 100%;
-  margin: 0 auto;
-  transform: scale(0.8);
-  filter: blur(calc(var(--aniCard-height) / 6));
-  
-}
+
 
 @keyframes spin {
-  0% {
+  from  {
     --rotate: 0deg;
   }
-  100% {
+  to {
     --rotate: 360deg;
   }
 }
