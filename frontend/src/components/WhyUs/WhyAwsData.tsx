@@ -6,7 +6,7 @@ const WhyAwsData: Feature[] = [
   {
     id: 1,
     icon: (
-      <FontAwesomeIcon icon={faRobot} style={{color: "#09b6d4",}} />
+      <FontAwesomeIcon icon={faRobot} style={{color: "#09b6d4",height:'30px', width:'30px'}} />
     ),
     title: "Streamlined Processes With Automation",
     paragraph:
@@ -15,7 +15,7 @@ const WhyAwsData: Feature[] = [
   {
     id: 2,
     icon: (
-      <FontAwesomeIcon icon={faGears} pulse style={{color: "#09b6d4",}} />
+      <FontAwesomeIcon icon={faGears} style={{color: "#09b6d4",height:'30px', width:'30px'}} />
 
      
     ),
@@ -26,7 +26,7 @@ const WhyAwsData: Feature[] = [
   {
     id: 3,
     icon: (
-      <FontAwesomeIcon icon={faLock} style={{color: "#09b6d4",}} />
+      <FontAwesomeIcon icon={faLock} style={{color: "#09b6d4",height:'30px', width:'30px'}} />
      
     ),
     title: "Compact and secure strategies",

@@ -1,7 +1,4 @@
 import { Feature } from "@/types/feature";
-import imageTwo from '../../../public/images/logo/cloudAdoptionStrategy.png'
-import imageThree from '../../../public/images/logo/cloudConsulting.png'
-import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBuilding,faUserSecret,faHandHoldingHand } from "@fortawesome/free-solid-svg-icons";
 
@@ -9,7 +6,7 @@ const WhyUsData: Feature[] = [
   {
     id: 1,
     icon: (
-      <FontAwesomeIcon icon={faBuilding} style={{color: "#09b6d4",}} />
+      <FontAwesomeIcon icon={faBuilding} style={{color: "#09b6d4",height:'30px', width:'30px'}} />
     ),
     title: "Streamline Business",
     paragraph:
@@ -18,7 +15,7 @@ const WhyUsData: Feature[] = [
   {
     id: 2,
     icon: (
-      <FontAwesomeIcon icon={faUserSecret} pulse style={{color: "#09b6d4",}} />
+      <FontAwesomeIcon icon={faUserSecret}  style={{color: "#09b6d4",height:'30px', width:'30px'}} />
 
      
     ),
@@ -29,7 +26,7 @@ const WhyUsData: Feature[] = [
   {
     id: 3,
     icon: (
-      <FontAwesomeIcon icon={faHandHoldingHand} style={{color: "#09b6d4",}} />
+      <FontAwesomeIcon icon={faHandHoldingHand} style={{color: "#09b6d4",height:'30px', width:'30px'}} />
      
     ),
     title: "On- Demand Training",

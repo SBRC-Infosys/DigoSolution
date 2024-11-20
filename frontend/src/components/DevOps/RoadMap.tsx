@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import RoadMapData from "./RoadMapData";
+import SectionTitle from "../Common/SectionTitle";
 
 const RoadMap = () => {
   const [selectedId, setSelectedId] = useState<number | null>(RoadMapData[0]?.id || null);
@@ -9,7 +10,13 @@ const RoadMap = () => {
   };
 
   return (
-    <div className="container flex-col flex gap-12 lg:flex-row">
+    <div className="container my-16">
+    <SectionTitle
+          title="Streamline Your Operations"
+          paragraph=" "
+          center
+        />
+    <div className=" flex-col flex gap-12 lg:flex-row">
       <div className="roadmap-left grid grid-cols-2 lg:w-2/5">
         {RoadMapData.map((item) => (
           <div
@@ -46,6 +53,7 @@ const RoadMap = () => {
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 };

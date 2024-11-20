@@ -1,50 +1,47 @@
 import { Feature } from "@/types/feature";
-import imageTwo from '../../../public/images/logo/cloudAdoptionStrategy.png'
-import imageThree from '../../../public/images/logo/cloudConsulting.png'
-import Image from "next/image";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBuilding,faUserSecret,faHandHoldingHand } from "@fortawesome/free-solid-svg-icons";
+import { faCompassDrafting, faMobileScreenButton, faLayerGroup, faInfinity } from "@fortawesome/free-solid-svg-icons";
 
 const WhyDevOpsData: Feature[] = [
   {
     id: 1,
     icon: (
-      <FontAwesomeIcon icon={faBuilding} style={{color: "#09b6d4",}} />
+      <FontAwesomeIcon icon={faCompassDrafting} style={{color: "#09b6d4",height:'30px', width:'30px'}} />
     ),
-    title: "Streamline Business",
+    title: "Design & Architecting",
     paragraph:
-      "Digo incorporates the cloud in its business operating platform solutions for mid-sized and larger enterprises as we streamline business processes, from manual activities to disaster recovery scenarios. ",
+      "Improve business agility through the integration of development, testing, and operations departments into cross-functional teams ",
   },
   {
     id: 2,
     icon: (
-      <FontAwesomeIcon icon={faUserSecret} pulse style={{color: "#09b6d4",}} />
+      <FontAwesomeIcon icon={faMobileScreenButton}   style={{color: "#09b6d4",height:'30px', width:'30px'}} />
 
      
     ),
-    title: "Security & Compliance",
+    title: "Application Modernization",
     paragraph:
-      "Our technical specialists review your existing IT infrastructure to design appropriate IT strategies that are applicable to your organization ",
+      "We re-platform applications by containerizing applications and services and modernizing databases to efficient serverless architectures ",
   },
   {
     id: 3,
     icon: (
-      <FontAwesomeIcon icon={faHandHoldingHand} style={{color: "#09b6d4",}} />
+      <FontAwesomeIcon icon={faLayerGroup} style={{color: "#09b6d4",height:'30px', width:'30px'}} />
      
     ),
-    title: "On- Demand Training",
+    title: "Project Recovery Consulting",
     paragraph:
-      "As an AWS Partner with skilled & certified AWS experts, we help our clients by delivering on-demand training and knowledge sharing to solve the unique challenges they face.",
+      "Save your failing projects as our skilled experts will provide knowledgeable DevOps support that answers real problems ",
   },
   {
     id: 4,
     icon: (
-      <FontAwesomeIcon icon={faHandHoldingHand} style={{color: "#09b6d4",}} />
+      <FontAwesomeIcon icon={faInfinity} style={{color: "#09b6d4",height:'30px', width:'30px'}} />
      
     ),
-    title: "On- Demand Training",
+    title: "DevOps Consulting",
     paragraph:
-      "As an AWS Partner with skilled & certified AWS experts, we help our clients by delivering on-demand training and knowledge sharing to solve the unique challenges they face.",
+      "Our team will help you choose, install and configure the right tools for an efficient DevOps environment",
   },
 ];
 export default WhyDevOpsData;

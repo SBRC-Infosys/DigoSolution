@@ -12,7 +12,7 @@ const WhyDevOps = () => {
           center
         />
 
-        <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-x-8 gap-y-14 md:grid-cols-2  xl:grid-cols-3 2xl:grid-cols-4">
           {WhyDevOpsData.map((feature) => (
             <WhyUsFeatures key={feature.id} feature={feature} />
           ))}
