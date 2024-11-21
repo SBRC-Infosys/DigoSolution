@@ -229,13 +229,32 @@ position: relative;
 .skeleton:last-child::after {
   border-width: 3px 0px 0px 0px;
 }
-.dark .skeleton::after {
+.dark .skeleton::after,.dark .skeletonStraight::after {
   border-color: white;
 }
 @media (max-width: 1000px) {
   .skeleton::after {
     display: none;
   }
+}
+
+.skeletonStraight{
+  position: relative;
+}
+
+.skeletonStraight::after{
+  content: '';
+  position: absolute;
+  height: 135%;
+  width: 70%;
+  top: 50%;
+  left: -20%;
+  z-index: -2;
+  border: dashed black;
+  border-width: 0px 3px 0px 0px;
+}
+.skeletonStraight:last-child::after {
+  border-width: 0px 0px 0px 0px;
 }
 
 .oneColor{

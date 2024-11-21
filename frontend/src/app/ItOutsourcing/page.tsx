@@ -1,5 +1,12 @@
+'use client'
+
+import AppoinmentBread from "@/components/Common/AppoinmentBread";
 import Breadcrumb from "@/components/Common/Breadcrumb";
+import Technologies from "@/components/Common/Technologies";
+import HowItWorks from "@/components/OutsourcingCapabilities/HowItWorks";
 import ITCapabilities from "@/components/OutsourcingCapabilities/ITCapabilities";
+import Testimonials from "@/components/Testimonials";
+import TrustedBy from "@/components/TrustedBy";
 import React from "react";
 
 const ItOutsourcing = () => {
@@ -16,6 +23,11 @@ const ItOutsourcing = () => {
         animationIcons="https://lottie.host/20157507-17db-437f-9db5-a6c27416316c/tRnd5k4dcj.json"
       />
       <ITCapabilities/>
+      <AppoinmentBread description="Low Cost, High Scale Development" appoinment=" Your Requirement"/>
+      <HowItWorks/>
+      <Technologies/>
+      <TrustedBy/>
+      <Testimonials/>
     </>
   );
 };
