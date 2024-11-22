@@ -3,6 +3,7 @@
 import AppoinmentBread from "@/components/Common/AppoinmentBread";
 import Breadcrumb from "@/components/Common/Breadcrumb";
 import Technologies from "@/components/Common/Technologies";
+import DeliveryModels from "@/components/OutsourcingCapabilities/DeliveryModels";
 import HowItWorks from "@/components/OutsourcingCapabilities/HowItWorks";
 import ITCapabilities from "@/components/OutsourcingCapabilities/ITCapabilities";
 import Testimonials from "@/components/Testimonials";
@@ -27,6 +28,7 @@ const ItOutsourcing = () => {
       <HowItWorks/>
       <Technologies/>
       <TrustedBy/>
+      <DeliveryModels/>
       <Testimonials/>
     </>
   );

@@ -37,6 +37,7 @@ const DevOps = () => {
       <Testimonials/>
       <TrustedBy/>
       <Blog/>
+      
     </>
   );
 };
