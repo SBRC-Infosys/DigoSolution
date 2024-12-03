@@ -31,7 +31,7 @@ const DevOps = () => {
       <RoadMap/>
       <Technologies/>
       <Model/>
-      <AppoinmentBread  description="Start Your DevOps Journey With Us" appoinment="Shedule A Call"/>
+      <AppoinmentBread  description="Start Your DevOps Journey With Us" appoinment="Shedule A Call" whatFor="Shedule A Call"/>
       <Advantage/>
       <AutomaticNumbers/>
       <Testimonials/>

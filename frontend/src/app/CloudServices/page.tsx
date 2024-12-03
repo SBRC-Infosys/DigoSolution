@@ -1,3 +1,4 @@
+
 import AboutSectionOne from "@/components/About/AboutSectionOne";
 import Blog from "@/components/Blog";
 import Capabilities from "@/components/Capabilities/Capabilities";
@@ -32,6 +33,7 @@ const CloudServicesPage = () => {
       <AppoinmentBread
         description="Experience Seamless Cloud Operations"
         appoinment="Book A Consulation"
+        whatFor="Book A Consulation"
       />
       <Testimonials />
       <TrustedBy />

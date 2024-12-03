@@ -300,3 +300,15 @@ position: relative;
   filter: blur(1.5rem);
   opacity: 0.5;
 }
+
+:where(.css-dev-only-do-not-override-apn68).ant-modal{
+  padding: 0;
+}
+.dark .ant-modal .ant-modal-content {
+  position: relative;
+  background-color: #1e232e;}
+
+ .dark .anticon{
+    
+    color: white;
+  }
