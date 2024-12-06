@@ -3,7 +3,7 @@ import React from "react";
 import { useState } from "react";
 import { LoadingOutlined } from "@ant-design/icons";
 import BlogList from "@/components/ProductList/BlogList";
-import { BlogFilters, fetchBlogs } from "@/api/blogs";
+import { BlogFilters, fetchBlogs } from "@/pages/api/blogs";
 import BlogListFilter from "@/components/ProductList/BlogListFilter";
 import { Spin } from "antd";
 import { useQuery } from "@tanstack/react-query";
@@ -29,8 +29,12 @@ const BlogContent = () => {
             }}
             indicator={<LoadingOutlined style={{ fontSize: 48 }} spin />}
           />
+        ) : data && data.length > 0 ? (
+          <BlogList blogs={data} />
         ) : (
-          data && data.length > 0 ? (<BlogList blogs={data} />) : (<h1 className="font-extrabold text-4xl text-center my-8 text-red-500">😭No related Data found</h1>)
+          <h1 className="my-8 text-center text-4xl font-extrabold text-red-500">
+            😭No related Data found
+          </h1>
         )}
       </div>
     </div>

@@ -1,22 +1,56 @@
-import { ProductFilters } from "@/api/products";
+import { ProductFilters } from "@/pages/api/products";
 import { useEffect, useState } from "react";
 
 type ProductListFiltersProps = {
   onChange: (filters: ProductFilters) => void;
 };
 
-export default function ProductListFilters({ onChange }: ProductListFiltersProps) {
+export default function ProductListFilters({
+  onChange,
+}: ProductListFiltersProps) {
   const [category, setCategory] = useState<ProductFilters["category"]>();
 
-  const categories: { value: ProductFilters["category"]; label: string; icon: string | null }[] = [
+  const categories: {
+    value: ProductFilters["category"];
+    label: string;
+    icon: string | null;
+  }[] = [
     { value: undefined, label: "All", icon: null },
-    { value: "containerization", label: "Containerization", icon: "https://ds0xrsm6llh5h.cloudfront.net/frontend/media/devops/image/containerization.svg" },
-    { value: "infrastructure", label: "Infrastructure", icon: "https://ds0xrsm6llh5h.cloudfront.net/frontend/media/devops/image/infrastructure.svg" },
-    { value: "ci/cd", label: "CI/CD", icon: "https://ds0xrsm6llh5h.cloudfront.net/frontend/media/devops/image/cicd.svg" },
-    { value: "monitoring", label: "Monitoring", icon: "https://ds0xrsm6llh5h.cloudfront.net/frontend/media/devops/image/monitoring.svg" },
-    { value: "cloud-platform", label: "Cloud Platform", icon: "https://ds0xrsm6llh5h.cloudfront.net/frontend/media/devops/image/cloudPlatform.svg" },
-    { value: "database", label: "Database", icon: "https://ds0xrsm6llh5h.cloudfront.net/frontend/media/devops/image/database.svg" },
-    { value: "coding", label: "Coding", icon: "https://ds0xrsm6llh5h.cloudfront.net/frontend/media/devops/image/coding.svg" },
+    {
+      value: "containerization",
+      label: "Containerization",
+      icon: "https://ds0xrsm6llh5h.cloudfront.net/frontend/media/devops/image/containerization.svg",
+    },
+    {
+      value: "infrastructure",
+      label: "Infrastructure",
+      icon: "https://ds0xrsm6llh5h.cloudfront.net/frontend/media/devops/image/infrastructure.svg",
+    },
+    {
+      value: "ci/cd",
+      label: "CI/CD",
+      icon: "https://ds0xrsm6llh5h.cloudfront.net/frontend/media/devops/image/cicd.svg",
+    },
+    {
+      value: "monitoring",
+      label: "Monitoring",
+      icon: "https://ds0xrsm6llh5h.cloudfront.net/frontend/media/devops/image/monitoring.svg",
+    },
+    {
+      value: "cloud-platform",
+      label: "Cloud Platform",
+      icon: "https://ds0xrsm6llh5h.cloudfront.net/frontend/media/devops/image/cloudPlatform.svg",
+    },
+    {
+      value: "database",
+      label: "Database",
+      icon: "https://ds0xrsm6llh5h.cloudfront.net/frontend/media/devops/image/database.svg",
+    },
+    {
+      value: "coding",
+      label: "Coding",
+      icon: "https://ds0xrsm6llh5h.cloudfront.net/frontend/media/devops/image/coding.svg",
+    },
   ];
 
   useEffect(() => {
@@ -25,7 +59,7 @@ export default function ProductListFilters({ onChange }: ProductListFiltersProps
 
   return (
     <>
-      <div className="sm:flex hidden flex-wrap gap-2">
+      <div className="hidden flex-wrap gap-2 sm:flex">
         {categories.map((cat) => (
           <button
             key={cat.value || "all"}
@@ -51,8 +85,12 @@ export default function ProductListFilters({ onChange }: ProductListFiltersProps
       <div className="mt-4 sm:hidden">
         <select
           value={category}
-          onChange={(e) => setCategory(e.target.value as ProductFilters["category"] || undefined)}
-          className="w-full font-bold text-base flex justify-center border rounded-md dark:bg-black p-4 dark:border-white dark:text-white"
+          onChange={(e) =>
+            setCategory(
+              (e.target.value as ProductFilters["category"]) || undefined,
+            )
+          }
+          className="flex w-full justify-center rounded-md border p-4 text-base font-bold dark:border-white dark:bg-black dark:text-white"
         >
           {categories.map((cat) => (
             <option key={cat.value || "all"} value={cat.value || ""}>
