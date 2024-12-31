@@ -1,8 +1,26 @@
-require('dotenv').config();
-const app = require('./src/app');
+const http = require('http');
+const startServer = require('./src/app.js');
+const dotenv = require('dotenv');
 
-const PORT = process.env.PORT || 3000;
+dotenv.config();
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+const PORT = process.env.PORT || 3001;
+
+async function init() {
+  try {
+    const app = await startServer(); // Wait for the app to be initialized
+    const server = http.createServer(app);
+
+    server.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+
+    server.on('error', (error) => {
+      console.error(`Error occurred: ${error.message}`);
+    });
+  } catch (error) {
+    console.error('Failed to start the server:', error);
+  }
+}
+
+init(); // Start the initialization process

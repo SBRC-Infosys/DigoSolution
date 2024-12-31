@@ -1,13 +1,17 @@
-const express = require('express');
-const teamController = require('../controllers/teamController');
+const express = require("express");
+const { addTeamMember, deleteTeamMember, getTeamMember, getTeamMembers, updateTeamMember } = require("../controllers/teamCtrl.js");
+const { upload } = require("../middlewares/multer.middleware.js");
 
 const router = express.Router();
 
-// Define routes for the team
-router.get('/', teamController.getAllTeamMembers);
-router.get('/:id', teamController.getTeamMemberById);
-router.post('/', teamController.createTeamMember);
-router.put('/:id', teamController.updateTeamMember);
-router.delete('/:id', teamController.deleteTeamMember);
+router.get('/', getTeamMembers);
+
+router.get('/:id', getTeamMember);
+
+router.post('/add', upload.single('image'), addTeamMember); // Add image upload
+
+router.patch('/:id', upload.single('image'), updateTeamMember); // Add image upload
+
+router.delete('/:id', deleteTeamMember);
 
 module.exports = router;

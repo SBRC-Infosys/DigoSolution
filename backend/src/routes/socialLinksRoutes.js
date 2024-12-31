@@ -1,14 +1,23 @@
-const express = require('express');
-const socialLinksController = require('../controllers/SocialLinksController');
-
+const express = require("express");
+const { upload } = require("../middlewares/multer.middleware.js");
+const { 
+  addSocialLink, 
+  deleteSocialLinkById, 
+  getAllSocialLinks, 
+  getSocialLinkById, 
+  updateSocialLinkById 
+} = require("../controllers/socialLinksCtrl.js");
 
 const router = express.Router();
 
-// Define routes for social links
-router.get('/', socialLinksController.getAllSocialLinks);
-router.get('/:id', socialLinksController.getSocialLinkById);
-router.post('/', socialLinksController.createSocialLink);
-router.put('/:id', socialLinksController.updateSocialLink);
-router.delete('/:id', socialLinksController.deleteSocialLink);
+router.get('/', getAllSocialLinks);
+
+router.get('/:id', getSocialLinkById);
+
+router.post('/add', upload.single('image'), addSocialLink);
+
+router.patch('/update/:id', upload.single('image'), updateSocialLinkById);
+
+router.delete('/delete/:id', deleteSocialLinkById);
 
 module.exports = router;

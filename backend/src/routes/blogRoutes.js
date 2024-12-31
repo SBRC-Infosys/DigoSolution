@@ -1,11 +1,17 @@
-const express = require('express');
-const router = express.Router();
-const blogController = require('../controllers/blogController');
+const express = require("express");
+const { upload } = require("../middlewares/multer.middleware.js");
+const { createBlog, deleteBlogById, getBlogById, getBlogs, updateBlogById } = require("../controllers/blogCtrl.js");
 
-router.get('/', blogController.getAllBlogs);
-router.get('/:id', blogController.getBlogById);
-router.post('/', blogController.createBlog);
-router.put('/:id', blogController.updateBlog);
-router.delete('/:id', blogController.deleteBlog);
+const router = express.Router();
+
+router.get('/', getBlogs);
+
+router.get('/:id', getBlogById);
+
+router.post('/add', upload.single('image'), createBlog);
+
+router.patch('/update/:id', upload.single('image'), updateBlogById);
+
+router.delete('/delete/:id', deleteBlogById);
 
 module.exports = router;

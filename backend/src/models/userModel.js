@@ -1,14 +1,17 @@
-const db = require('../config/db');
+const { db } = require("../config/db");
 
-const User = {
-  getAll: (callback) => db.query('SELECT * FROM users', callback),
-  getById: (id, callback) => db.query('SELECT * FROM users WHERE id = ?', [id], callback),
-  create: (user, callback) =>
-    db.query('INSERT INTO users SET ?', user, callback),
-  update: (id, user, callback) =>
-    db.query('UPDATE users SET ? WHERE id = ?', [user, id], callback),
-  delete: (id, callback) =>
-    db.query('DELETE FROM users WHERE id = ?', [id], callback),
-};
+async function createUsersTable() {
+    await db.execute(sql`
+        CREATE TABLE IF NOT EXISTS users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            username VARCHAR(255) NOT NULL,
+            email VARCHAR(255) NOT NULL UNIQUE,
+            password VARCHAR(255) NOT NULL,
+            role VARCHAR(255) NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        );
+    `);
+}
 
-module.exports = User;
+module.exports = createUsersTable;

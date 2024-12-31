@@ -1,15 +1,20 @@
-const db = require('../config/db');
+const { db } = require("../config/db");
+const { sql } = require('drizzle-orm'); // Ensure you're importing this if you're using Drizzle ORM
 
-const Team = {
-  getAll: (callback) => db.query('SELECT * FROM team', callback),
-  getById: (id, callback) =>
-    db.query('SELECT * FROM team WHERE id = ?', [id], callback),
-  create: (teamMember, callback) =>
-    db.query('INSERT INTO team SET ?', teamMember, callback),
-  update: (id, teamMember, callback) =>
-    db.query('UPDATE team SET ? WHERE id = ?', [teamMember, id], callback),
-  delete: (id, callback) =>
-    db.query('DELETE FROM team WHERE id = ?', [id], callback),
-};
+async function createTeam() {
+    await db.execute(sql`
+        CREATE TABLE IF NOT EXISTS team (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            name VARCHAR(255) NOT NULL,
+            email VARCHAR(255) NOT NULL UNIQUE,
+            phone VARCHAR(255),
+            img_url VARCHAR(255),
+            designation VARCHAR(255) NOT NULL,
+            bio VARCHAR(255) NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+        );
+    `);
+}
 
-module.exports = Team;
+module.exports = createTeam;
