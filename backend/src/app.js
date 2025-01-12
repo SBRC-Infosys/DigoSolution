@@ -16,6 +16,8 @@ const testimonialsRoutes = require('./routes/testimonialsRoutes.js');
 const whyChooseUsRoutes = require('./routes/whyChooseUsRoutes.js');
 const newsEventsCategoriesRoutes = require('./routes/newsEventsCategoriesRoutes.js');
 const blogCategoriesRoutes = require('./routes/blogCategoriesRoutes.js');
+const subscriptionRoutes = require('./routes/subscriptionRoutes.js');
+const ourClientsRoutes = require('./routes/ourClientsRoutes.js');
 
 const { dbConnection } = require('./config/db.js'); // Import your database configuration
 
@@ -52,6 +54,8 @@ async function startServer() {
     app.use('/api/whychooseus', whyChooseUsRoutes); 
     app.use('/api/newseventscategories', newsEventsCategoriesRoutes); 
     app.use('/api/blogcategory', blogCategoriesRoutes); 
+    app.use('/api/subscription', subscriptionRoutes);
+    app.use('/api/clients', ourClientsRoutes);
 
     // 404 Error Handler
     app.use((req, res, next) => {
