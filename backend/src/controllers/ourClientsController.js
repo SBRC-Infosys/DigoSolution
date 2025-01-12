@@ -1,7 +1,10 @@
-const asyncHandler = require('express-async-handler');
-const { db } = require('../config/db.js');
-const { sql } = require('drizzle-orm');
-const { uploadOnCloudinary, deleteCloudinaryImage } = require('../services/cloudinary.js');
+const asyncHandler = require("express-async-handler");
+const { db } = require("../config/db.js");
+const { sql } = require("drizzle-orm");
+const {
+  uploadOnCloudinary,
+  deleteCloudinaryImage,
+} = require("../services/cloudinary.js");
 
 // Add a new client
 exports.addClient = asyncHandler(async (req, res) => {
@@ -16,7 +19,7 @@ exports.addClient = asyncHandler(async (req, res) => {
     }
 
     const [result] = await db.execute(sql`
-      INSERT INTO ourclients (CompanyName, Logo)
+      INSERT INTO OurClients (CompanyName, Logo)
       VALUES (${CompanyName}, ${logo});
     `);
 
@@ -29,12 +32,12 @@ exports.addClient = asyncHandler(async (req, res) => {
 
     res.json({
       status: 200,
-      message: 'Client added successfully',
+      message: "Client added successfully",
       client: rows[0],
     });
   } catch (error) {
-    console.error('Error adding client:', error);
-    res.status(500).json({ message: 'Failed to add client' });
+    console.error("Error adding client:", error);
+    res.status(500).json({ message: "Failed to add client" });
   }
 });
 
@@ -48,18 +51,18 @@ exports.getClients = asyncHandler(async (req, res) => {
     if (rows.length === 0) {
       return res.status(404).json({
         status: 404,
-        message: 'No clients found',
+        message: "No clients found",
       });
     }
 
     res.json({
       status: 200,
-      message: 'Clients fetched successfully',
+      message: "Clients fetched successfully",
       clients: rows,
     });
   } catch (error) {
-    console.error('Error fetching clients:', error);
-    res.status(500).json({ message: 'Failed to fetch clients' });
+    console.error("Error fetching clients:", error);
+    res.status(500).json({ message: "Failed to fetch clients" });
   }
 });
 
@@ -75,15 +78,15 @@ exports.getClientById = asyncHandler(async (req, res) => {
     if (rows.length > 0) {
       res.json({
         status: 200,
-        message: 'Client fetched successfully',
+        message: "Client fetched successfully",
         client: rows[0],
       });
     } else {
-      res.status(404).json({ message: 'Client not found' });
+      res.status(404).json({ message: "Client not found" });
     }
   } catch (error) {
-    console.error('Error fetching client:', error);
-    res.status(500).json({ message: 'Failed to fetch client' });
+    console.error("Error fetching client:", error);
+    res.status(500).json({ message: "Failed to fetch client" });
   }
 });
 
@@ -92,14 +95,14 @@ exports.updateClient = asyncHandler(async (req, res) => {
   const { CompanyName, logo: logoFromBody } = req.body;
 
   try {
-    let logo = logoFromBody || null;  // Fallback to null if logo is not provided
+    let logo = logoFromBody || null; // Fallback to null if logo is not provided
     if (req.file) {
       try {
         const uploadResult = await uploadOnCloudinary(req.file.path);
         logo = uploadResult.secure_url;
       } catch (uploadError) {
-        console.error('Error uploading logo to Cloudinary:', uploadError);
-        return res.status(500).json({ message: 'Failed to upload logo' });
+        console.error("Error uploading logo to Cloudinary:", uploadError);
+        return res.status(500).json({ message: "Failed to upload logo" });
       }
     }
 
@@ -116,18 +119,17 @@ exports.updateClient = asyncHandler(async (req, res) => {
 
       res.json({
         status: 200,
-        message: 'Client updated successfully',
+        message: "Client updated successfully",
         client: rows[0],
       });
     } else {
-      res.status(404).json({ message: 'Client not found' });
+      res.status(404).json({ message: "Client not found" });
     }
   } catch (error) {
-    console.error('Error updating client:', error);
-    res.status(500).json({ message: 'Failed to update client' });
+    console.error("Error updating client:", error);
+    res.status(500).json({ message: "Failed to update client" });
   }
 });
-
 
 // Delete client
 exports.deleteClient = asyncHandler(async (req, res) => {
@@ -152,16 +154,16 @@ exports.deleteClient = asyncHandler(async (req, res) => {
       if (result.affectedRows > 0) {
         res.json({
           status: 200,
-          message: 'Client deleted successfully',
+          message: "Client deleted successfully",
         });
       } else {
-        res.status(404).json({ message: 'Client not found' });
+        res.status(404).json({ message: "Client not found" });
       }
     } else {
-      res.status(404).json({ message: 'Client not found' });
+      res.status(404).json({ message: "Client not found" });
     }
   } catch (error) {
-    console.error('Error deleting client:', error);
-    res.status(500).json({ message: 'Failed to delete client' });
+    console.error("Error deleting client:", error);
+    res.status(500).json({ message: "Failed to delete client" });
   }
 });

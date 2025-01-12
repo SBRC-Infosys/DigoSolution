@@ -14,7 +14,7 @@ import EditModal from "../Modals/EditOurClients";
 const fetchOurClients = async () => {
   try {
     const res = await axiosInstance.get(`/clients`);
-    return res.data.data;
+    return res.data.clients;
   } catch (error) {
     console.error("Error while fetching our clients:", error);
   }
@@ -25,7 +25,7 @@ const TableOurClients: React.FC = () => {
     data: ourClients,
     isLoading,
     error,
-    refetch
+    refetch,
   } = useQuery<ClientTypes[]>({
     queryKey: ["ourClients"],
     queryFn: fetchOurClients,
@@ -36,10 +36,10 @@ const TableOurClients: React.FC = () => {
   const toast = useToast();
 
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const itemsPerPage = 8; 
+  const itemsPerPage = 8;
 
-   // Change page function
-   const onPageChange = (page: number) => {
+  // Change page function
+  const onPageChange = (page: number) => {
     setCurrentPage(page);
   };
 
@@ -51,21 +51,20 @@ const TableOurClients: React.FC = () => {
   const handleModalBox = (categoryItem: ClientTypes) => {
     setItem(categoryItem);
     setOpenModal(true);
-  }
+  };
 
-  const handleDelete = async (id:number) => {
+  const handleDelete = async (id: number) => {
     try {
       const response = await axiosInstance.delete(`/social-links/delete/${id}`);
-      if(response.status === 200 || response.status === 201){
-        toast.success('Item deleted successfully!');
+      if (response.status === 200 || response.status === 201) {
+        toast.success("Item deleted successfully!");
         refetch();
       }
     } catch (error) {
-      toast.error('Problem while deleting item. Try Again!');
-      console.error('Error while deleting banner gallery:',error);
+      toast.error("Problem while deleting item. Try Again!");
+      console.error("Error while deleting banner gallery:", error);
     }
-  }
-
+  };
 
   if (isLoading) return <Spinner />;
   if (error) return <div>Error: {(error as Error).message}</div>;
@@ -90,7 +89,7 @@ const TableOurClients: React.FC = () => {
                 Logo
               </h5>
             </div>
-            
+
             <div className="hidden p-2.5 text-center sm:block xl:p-4">
               <h5 className="text-sm font-medium uppercase xsm:text-base">
                 Action
@@ -123,8 +122,10 @@ const TableOurClients: React.FC = () => {
 
               <td className="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                 <div className="flex items-center justify-center space-x-3.5">
-                 
-                  <button className="hover:text-primary" onClick={()=>handleDelete(item.ClientID)}>
+                  <button
+                    className="hover:text-primary"
+                    onClick={() => handleDelete(item.ClientID)}
+                  >
                     <svg
                       className="fill-current"
                       width="18"
@@ -151,7 +152,10 @@ const TableOurClients: React.FC = () => {
                       />
                     </svg>
                   </button>
-                  <button className="hover:text-primary" onClick={()=> handleModalBox(item)}>
+                  <button
+                    className="hover:text-primary"
+                    onClick={() => handleModalBox(item)}
+                  >
                     <svg
                       className="fill-current"
                       width="18"
