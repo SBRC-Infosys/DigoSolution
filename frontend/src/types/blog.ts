@@ -1,4 +1,4 @@
-type Author = {
+export type Author = {
   name: string;
   image: string;
   designation: string;
@@ -7,9 +7,10 @@ type Author = {
 export type Blog = {
   id: number;
   title: string;
-  paragraph: string;
-  image: string;
-  author: Author;
-  tags: string[];
-  publishDate: string;
+  img_url: string;
+  content: string;
+  author_id: string;
+  category_id: string;
+  // tags: string[];
+  published_at: string;
 };

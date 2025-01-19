@@ -1,40 +1,57 @@
+"use client";
 import { Testimonial } from "@/types/testimonial";
 import SectionTitle from "../Common/SectionTitle";
 import SingleTestimonial from "./SingleTestimonial";
+import { fetchTestimonials } from "@/pages/api/testimonials";
+import { useQuery } from "@tanstack/react-query";
 
-const testimonialData: Testimonial[] = [
-  {
-    id: 1,
-    name: "Musharof Chy",
-    designation: "Founder @TailGrids",
-    content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
-    image: "/images/testimonials/auth-01.png",
-    star: 5,
-  },
-  {
-    id: 2,
-    name: "Devid Weilium",
-    designation: "Founder @UIdeck",
-    content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
-    image: "/images/testimonials/auth-02.png",
-    star: 5,
-  },
-  {
-    id: 3,
-    name: "Lethium Frenci",
-    designation: "Founder @Lineicons",
-    content:
-      "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
-    image: "/images/testimonials/auth-03.png",
-    star: 5,
-  },
-];
+// const testimonialData: Testimonial[] = [
+//   {
+//     id: 1,
+//     name: "Musharof Chy",
+//     designation: "Founder @TailGrids",
+//     content:
+//       "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
+//     image: "/images/testimonials/auth-01.png",
+//     star: 5,
+//   },
+//   {
+//     id: 2,
+//     name: "Devid Weilium",
+//     designation: "Founder @UIdeck",
+//     content:
+//       "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
+//     image: "/images/testimonials/auth-02.png",
+//     star: 5,
+//   },
+//   {
+//     id: 3,
+//     name: "Lethium Frenci",
+//     designation: "Founder @Lineicons",
+//     content:
+//       "Our members are so impressed. It's intuitive. It's clean. It's distraction free. If you're building a community.",
+//     image: "/images/testimonials/auth-03.png",
+//     star: 5,
+//   },
+// ];
 
 const Testimonials = () => {
+  const { data, isLoading } = useQuery({
+    queryKey: ["testimonials"],
+    queryFn: () => fetchTestimonials(),
+  });
+
+  if (isLoading) {
+    return null;
+  }
+
+  const testimonialData: Testimonial[] = (data || []).map((item: any) => ({
+    ...item,
+    star: Math.floor(Math.random() * 3) + 2,
+  }));
+
   return (
-    <section className="dark:bg-bg-color-dark bg-gray-light relative z-10 py-16 md:py-20 lg:py-28">
+    <section className="relative z-10 bg-gray-light py-16 dark:bg-bg-color-dark md:py-20 lg:py-28">
       <div className="container">
         <SectionTitle
           title="What Our Users Says"

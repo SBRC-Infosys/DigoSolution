@@ -12,10 +12,9 @@ import { fetchCompany } from "../Tables/TableEleven";
 
 export const metadata: Metadata = {
   title: "Sign In | Digo Solution Dashboard",
-  description: "Sign in to access your personalized Digo Solution dashboard, where you can track and manage Solution services, and client's data securely and efficiently.",
+  description:
+    "Sign in to access your personalized Digo Solution dashboard, where you can track and manage Solution services, and client's data securely and efficiently.",
 };
-
-
 
 const SignIn: React.FC = () => {
   const router = useRouter(); // Initialize useRouter
@@ -27,8 +26,8 @@ const SignIn: React.FC = () => {
   const {
     data: companyData,
     isLoading,
-    error:fetchErr,
-    refetch
+    error: fetchErr,
+    refetch,
   } = useQuery<Company[]>({
     queryKey: ["company"],
     queryFn: fetchCompany,
@@ -38,12 +37,13 @@ const SignIn: React.FC = () => {
     e.preventDefault();
 
     if (!email || !password) {
-      toast.info(`Please fill up all the fields`);  // Added input validation
+      toast.info(`Please fill up all the fields`); // Added input validation
       return;
     }
 
     try {
-      const response = await axiosInstance.post(  // Simplified Axios request
+      const response = await axiosInstance.post(
+        // Simplified Axios request
         "/user/login",
         {
           email,
@@ -53,35 +53,35 @@ const SignIn: React.FC = () => {
           headers: {
             "Content-Type": "application/json",
           },
-        }
+        },
       );
 
-      const data = await response.data;  // Extract data properly
+      const data = await response.data; // Extract data properly
 
       if (response.status === 200 || response.status === 201) {
-        setCookie("token", data.token, { path: "/" });  // Save token in cookie
-        setCookie("user", JSON.stringify(data.user), { path: "/" });  // Save user in cookie
+        setCookie("token", data.token, { path: "/" }); // Save token in cookie
+        setCookie("user", JSON.stringify(data.user), { path: "/" }); // Save user in cookie
 
         // Fetch cookies for validation
-        const token = getCookie("token");  
+        const token = getCookie("token");
         const user = getCookie("user");
 
-        if (token && user) {  // Check if cookies were successfully set
+        if (token && user) {
+          // Check if cookies were successfully set
           toast.success("Successfully logged in as admin.");
-          router.push("/admin");  // Redirect to /admin
+          router.push("/admin"); // Redirect to /admin
         } else {
           toast.error("Failed to save session. Please try again.");
         }
       } else {
-        toast.error("Credentials incorrect. Try Again!");  // Handle incorrect credentials
+        toast.error("Credentials incorrect. Try Again!"); // Handle incorrect credentials
         setError(data.message);
       }
     } catch (err) {
-      toast.error("Failed to hit the request.");  // Error handling in catch block
+      toast.error("Failed to hit the request."); // Error handling in catch block
       setError("An error occurred. Please try again.");
     }
-};
-
+  };
 
   return (
     <>
@@ -90,18 +90,18 @@ const SignIn: React.FC = () => {
           <div className="hidden w-full xl:block xl:w-1/2">
             <div className="px-26 py-17.5 text-center">
               <Link className="mb-5.5 inline-block" href="/">
-                {
-                  companyData && (
-                    <Image
+                {companyData && (
+                  <Image
                     // className="hidden dark:block"
                     className="rounded-full"
-                    src={companyData[0]?.logo_url || "/images/logo/logo-dark.svg"}
+                    src={
+                      companyData[0]?.logo_url || "/images/logo/logo-dark.svg"
+                    }
                     alt="Logo"
                     width={100}
                     height={100}
                   />
-                  )
-                }
+                )}
                 {/* <Image
                   className="dark:hidden"
                   src={"/images/logo/logo-dark.svg"}
@@ -111,9 +111,7 @@ const SignIn: React.FC = () => {
                 /> */}
               </Link>
 
-              <p className="2xl:px-20">
-                Purely Organic, Naturally Healthy.
-              </p>
+              <p className="2xl:px-20">Purely Organic, Naturally Healthy.</p>
 
               <span className="mt-15 inline-block">
                 <svg
@@ -244,7 +242,7 @@ const SignIn: React.FC = () => {
             <div className="w-full p-4 sm:p-12.5 xl:p-17.5">
               <span className="mb-1.5 block font-medium">Start for free</span>
               <h2 className="mb-9 text-2xl font-bold text-black dark:text-white sm:text-title-xl2">
-                Sign In to {companyData && (companyData[0].company_name)}
+                Sign In to {companyData && companyData[0].company_name}
               </h2>
 
               <form>

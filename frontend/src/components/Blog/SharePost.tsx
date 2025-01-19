@@ -1,9 +1,11 @@
-const SharePost = () => {
+const SharePost = ({ shareUrl, shareTitle }) => {
   return (
     <>
       <a
-        href="#0"
-        aria-label="social-share"
+        href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(shareUrl)}&title=${encodeURIComponent(shareTitle)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="share on LinkedIn"
         className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-sm bg-gray-light text-body-color duration-300 hover:bg-primary hover:text-white dark:bg-gray-dark dark:hover:bg-primary sm:ml-3"
       >
         <svg
@@ -16,8 +18,10 @@ const SharePost = () => {
         </svg>
       </a>
       <a
-        href="#0"
-        aria-label="social-share"
+        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(shareTitle)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="share on Twitter"
         className="mb-3 ml-3 inline-flex h-9 w-9 items-center justify-center rounded-sm bg-gray-light text-body-color duration-300 hover:bg-primary hover:text-white dark:bg-gray-dark dark:hover:bg-primary"
       >
         <svg
@@ -36,8 +40,10 @@ const SharePost = () => {
         </svg>
       </a>
       <a
-        href="#0"
-        aria-label="social-share"
+        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="share on Facebook"
         className="mb-3 ml-3 inline-flex h-9 w-9 items-center justify-center rounded-sm bg-gray-light text-body-color duration-300 hover:bg-primary hover:text-white dark:bg-gray-dark dark:hover:bg-primary"
       >
         <svg

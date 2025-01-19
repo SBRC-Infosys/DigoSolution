@@ -1,12 +1,12 @@
-const { db, pool } = require('../config/db.js'); // Import the initialized Drizzle ORM instance
-const { sql, eq } = require('drizzle-orm');
-const asyncHandler = require('express-async-handler');
-const bcrypt = require('bcrypt');
-const { generateToken } = require('../config/jwtToken.js');
-const sgMail = require('@sendgrid/mail');
-const { generateOtp } = require('../utils/generateOtp.js');
-const dotenv = require('dotenv');
-const { validateOtp } = require('../utils/validateOtp.js');
+const { db, pool } = require("../config/db.js"); // Import the initialized Drizzle ORM instance
+const { sql, eq } = require("drizzle-orm");
+const asyncHandler = require("express-async-handler");
+const bcrypt = require("bcrypt");
+const { generateToken } = require("../config/jwtToken.js");
+const sgMail = require("@sendgrid/mail");
+const { generateOtp } = require("../utils/generateOtp.js");
+const dotenv = require("dotenv");
+const { validateOtp } = require("../utils/validateOtp.js");
 
 dotenv.config();
 
@@ -49,13 +49,15 @@ const getUserById = asyncHandler(async (req, res) => {
     `);
 
     if (user.length === 0) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: "User not found" });
     }
 
     res.json({ data: user });
   } catch (error) {
-    console.error('Error fetching user:', error);
-    res.status(500).json({ message: 'Failed to fetch user', error: error.message });
+    console.error("Error fetching user:", error);
+    res
+      .status(500)
+      .json({ message: "Failed to fetch user", error: error.message });
   }
 });
 
@@ -64,7 +66,7 @@ const fetchUsers = asyncHandler(async (req, res) => {
     const [users] = await db.execute(sql`
         SELECT * FROM users;`);
 
-    res.json(users);
+    res.json({ data: users });
   } catch (error) {
     console.error("Error fetching users:", error);
     res.status(500).json({ message: "Internal Server Error" });
@@ -80,46 +82,50 @@ const updateUserById = asyncHandler(async (req, res) => {
     let updateValues = [];
 
     if (username) {
-      updateFields.push('username = ?');
+      updateFields.push("username = ?");
       updateValues.push(username);
     }
     if (email) {
-      updateFields.push('email = ?');
+      updateFields.push("email = ?");
       updateValues.push(email);
     }
     if (password) {
       const hashedPassword = await bcrypt.hash(password, 10);
-      updateFields.push('password = ?');
+      updateFields.push("password = ?");
       updateValues.push(hashedPassword);
     }
     if (role) {
-      updateFields.push('role = ?');
+      updateFields.push("role = ?");
       updateValues.push(role);
     }
 
     if (updateFields.length === 0) {
-      return res.status(400).json({ message: 'No fields to update' });
+      return res.status(400).json({ message: "No fields to update" });
     }
 
     updateValues.push(id);
 
     const updateSql = `
           UPDATE users
-          SET ${updateFields.join(', ')}
+          SET ${updateFields.join(", ")}
           WHERE id = ?`;
 
     const [result] = await pool.query(updateSql, updateValues);
 
     if (result.affectedRows === 0) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: "User not found" });
     }
 
-    const [updatedUser] = await pool.query('SELECT * FROM users WHERE id = ?', [id]);
+    const [updatedUser] = await pool.query("SELECT * FROM users WHERE id = ?", [
+      id,
+    ]);
 
     res.json({ data: updatedUser });
   } catch (error) {
-    console.error('Error updating user:', error);
-    res.status(500).json({ message: 'Failed to update user', error: error.message });
+    console.error("Error updating user:", error);
+    res
+      .status(500)
+      .json({ message: "Failed to update user", error: error.message });
   }
 });
 
@@ -182,9 +188,14 @@ const forgetPassword = asyncHandler(async (req, res, next) => {
       [email, otp, expiresAt]
     );
 
-    res.status(200).json({ message: "OTP sent to email and saved to database." });
+    res
+      .status(200)
+      .json({ message: "OTP sent to email and saved to database." });
   } catch (error) {
-    console.error("SendGrid error:", error.response?.body?.errors || error.message);
+    console.error(
+      "SendGrid error:",
+      error.response?.body?.errors || error.message
+    );
     res.status(500).json({ message: "Failed to send OTP email." });
     next(error);
   }
@@ -197,12 +208,16 @@ const resetPassword = asyncHandler(async (req, res, next) => {
     const isValid = await validateOtp(otp, email);
 
     if (isValid) {
-      const [userRows] = await db.execute(sql`SELECT * FROM users WHERE email = ${email}`);
+      const [userRows] = await db.execute(
+        sql`SELECT * FROM users WHERE email = ${email}`
+      );
 
       if (userRows.length) {
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        await db.execute(sql`UPDATE users SET password = ${hashedPassword} WHERE email = ${email}`);
+        await db.execute(
+          sql`UPDATE users SET password = ${hashedPassword} WHERE email = ${email}`
+        );
         await db.execute(sql`DELETE FROM otp WHERE email = ${email}`);
 
         res.status(200).json({ message: "Password reset successful." });
@@ -227,13 +242,15 @@ const deleteUserById = asyncHandler(async (req, res) => {
     `);
 
     if (result.affectedRows === 0) {
-      return res.status(404).json({ message: 'User not found' });
+      return res.status(404).json({ message: "User not found" });
     }
 
-    res.json({ message: 'User deleted successfully' });
+    res.json({ message: "User deleted successfully" });
   } catch (error) {
-    console.error('Error deleting user:', error);
-    res.status(500).json({ message: 'Failed to delete user', error: error.message });
+    console.error("Error deleting user:", error);
+    res
+      .status(500)
+      .json({ message: "Failed to delete user", error: error.message });
   }
 });
 
